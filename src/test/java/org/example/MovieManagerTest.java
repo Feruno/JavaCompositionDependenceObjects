@@ -131,4 +131,48 @@ class MovieManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void findLastLessLimitParam() {
+        MovieManager movie = new MovieManager(3);
+        movie.addMovie(movie1);
+        movie.addMovie(movie2);
+
+        MovieList[] actual = movie.findLast();
+        MovieList[] expected = {movie2, movie1};
+        Assertions.assertArrayEquals(expected, actual);
+
+        System.out.println(Arrays.deepToString(actual));
+    }
+
+    @Test
+    public void findLastMoreThanLimit() {
+        MovieManager movie = new MovieManager(2);
+        movie.addMovie(movie1);
+        movie.addMovie(movie2);
+        movie.addMovie(movie3);
+
+        MovieList[] actual = movie.findLast();
+        MovieList[] expected = {movie3, movie2};
+        Assertions.assertArrayEquals(expected, actual);
+
+        System.out.println(Arrays.deepToString(actual));
+    }
+
+    @Test
+    public void findLastSame() {
+        MovieManager movie = new MovieManager(6);
+        movie.addMovie(movie1);
+        movie.addMovie(movie2);
+        movie.addMovie(movie3);
+        movie.addMovie(movie4);
+        movie.addMovie(movie5);
+        movie.addMovie(movie6);
+
+        MovieList[] actual = movie.findLast();
+        MovieList[] expected = {movie6, movie5, movie4, movie3, movie2, movie1};
+        Assertions.assertArrayEquals(expected, actual);
+
+        System.out.println(Arrays.deepToString(actual));
+    }
+
 }

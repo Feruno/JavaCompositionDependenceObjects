@@ -27,7 +27,7 @@ public class MovieManager {
     }
 
     public MovieList[] findLast() {
-        if (movieListArr.length > count) {
+        if (movieListArr.length >= count) {
             this.count = count;
         } else {
             count = movieListArr.length;
@@ -35,7 +35,7 @@ public class MovieManager {
         MovieList[] tmp = new MovieList[count];
         int lastMovie = movieListArr.length;
 
-        for (int i = 0; i < movieListArr.length; i++) {
+        for (int i = 0; i < count; i++) {
             tmp[i] = movieListArr[lastMovie - 1 - i];
         }
         return tmp;
